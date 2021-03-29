@@ -9,8 +9,12 @@ const express = require('express');
     "Locale": "en_US", // Your locale here, case-sensitivity depends on input
 });
 
+
 // App Setup
 const app = express();
+
+//reference public folder
+app.use(express.static('public'));
 
 // Middleware
 // plugins or libraries we use to extend a web framework
