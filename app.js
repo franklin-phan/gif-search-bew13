@@ -35,9 +35,13 @@ app.get('/', (req, res) => {
         .then(response => {
             // store the gifs we get back from the search
             const gifs = response;
+            const searchTerm = term;
             // pass the gifs as an object into the home page
-            res.render('home', { gifs })
+            // console.log(term)
+            res.render('home', { gifs,searchTerm })
+
         }).catch(console.error);
+
   })
 
   app.get('/greetings/:name', (req, res) => {
