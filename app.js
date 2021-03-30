@@ -27,18 +27,20 @@ app.set('view engine', 'handlebars');
 app.get('/', (req, res) => {
     // Handle the home page when we haven't queried yet
     term = ""
+    gifCount = "10"
     if (req.query.term) {
         term = req.query.term
+        gifCount = req.query.gifCount
     }
+   
     // Tenor.search.Query("SEARCH KEYWORD HERE", "LIMIT HERE")
-    Tenor.Search.Query(term, "10")
+    Tenor.Search.Query(term,gifCount)
         .then(response => {
             // store the gifs we get back from the search
             const gifs = response;
             const searchTerm = term;
             // pass the gifs as an object into the home page
-            // console.log(term)
-            res.render('home', { gifs,searchTerm })
+          res.render('home', { gifs,searchTerm })
 
         }).catch(console.error);
 
